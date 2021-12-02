@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>アウトプットの時間</title><link href="https://kaffebreak.github.io/blog/" rel="alternate"></link><link href="https://kaffebreak.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>https://kaffebreak.github.io/blog/</id><updated>2021-12-02T00:00:00+09:00</updated><entry><title>なにこれ</title><link href="https://kaffebreak.github.io/blog/firstpost.html" rel="alternate"></link><published>2021-12-02T00:00:00+09:00</published><updated>2021-12-02T00:00:00+09:00</updated><author><name>kaffebreak</name></author><id>tag:kaffebreak.github.io,2021-12-02:/blog/firstpost.html</id><summary type="html">&lt;p&gt;このブログについて&lt;/p&gt;</summary><content type="html">&lt;h1&gt;このブログはなに？&lt;/h1&gt;
+&lt;p&gt;最近いろいろ覚えてるんですけど、右から左に抜けてる感が半端なくて、&lt;br&gt;
+チラシの裏程度にメモができるブログあればいいなと思って立ち上げました。
+&lt;br&gt;
+&lt;br&gt;
+はてブロとかでも全然良かったんですけど、勉強ついでにGitHub Pagesで作りました。
+&lt;br&gt;
+&lt;br&gt;
+……３日坊主にならないようにがんばります。&lt;/p&gt;</content><category term="未分類"></category></entry></feed>
