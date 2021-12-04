@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://kaffebreak.github.io/blog/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://kaffebreak.github.io/blog/theme/pygments/github.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://kaffebreak.github.io/blog/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://kaffebreak.github.io/blog/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://kaffebreak.github.io/blog/theme/font-awesome/css/solid.css">
+
+
+    <link href="https://kaffebreak.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="アウトプットの時間 Atom">
+
+
+
+  
+
+
+ 
+
+<meta name="author" content="kaffebreak" />
+<meta name="description" content="ヒント:RSA暗号" />
+<meta name="keywords" content="ctf, python">
+
+
+  <meta property="og:site_name" content="アウトプットの時間"/>
+  <meta property="og:title" content="ksnctf Q16 mathI"/>
+  <meta property="og:description" content="ヒント:RSA暗号"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://kaffebreak.github.io/blog/ksnctf-Q16-mathI.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2021-12-03 00:00:00+09:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="https://kaffebreak.github.io/blog/author/kaffebreak.html">
+  <meta property="article:section" content="ctf"/>
+  <meta property="article:tag" content="ctf"/>
+  <meta property="article:tag" content="python"/>
+  <meta property="og:image" content="">
+
+  <title>アウトプットの時間 &ndash; ksnctf Q16 mathI</title>
+
+</head>
+<body class="light-theme">
+  <aside>
+    <div>
+      <a href="https://kaffebreak.github.io/blog/">
+        <img src="https://kaffebreak.github.io/blog/theme/img/profile.png" alt="" title="">
+      </a>
+
+      <h1>
+        <a href="https://kaffebreak.github.io/blog/"></a>
+      </h1>
+
+
+
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kaffebreak" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/is_not_defined" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="ksnctf-Q16-mathI">ksnctf Q16 mathI</h1>
+    <p>
+      Posted on 金 03 12月 2021 in <a href="https://kaffebreak.github.io/blog/category/ctf.html">ctf</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <h3>問題文</h3>
+<p><a href="https://ksnctf.sweetduet.info/problem/16">Math I - ksnctf</a></p>
+<blockquote>
+<p>Let<br>
+ e = 65537,<br>
+ n = 1517330236262917595314610888889322115651087080826711948897066340883208205571592392362650858571076247939805436226544833224526137582834770402681005343930059463684528957271778199162575053306238099823295117697031968370690372250916935800738698142103275969223264184374648246277564306900886005299731265812255274723175925185522344831066577166867786835955092059346244885587228196357297758371381557924676260190209536670230008561217008649261974735505203813478978893582292682827884118215872470401293272325715864815977064075988643101088355047954735427424641386870772845440782632933485165110172437511822736907550777817722248753671107339823410418938404382732079381329288400012929311347390423061254658780185245562668131009832293474920208834795460061115101364091252176594144096675899952570380792978037217747311595899301451192342027799533264325948876556110474850761538179748318187805312451895898751337975457949549497666542175077894987697085521882531938339334715190663665300179658557458036053188152532948734992896239950564081581184284728802682982779186068791931259198917308153082917381616147108543673346682338045309449569430550618884202465809290850964525390539782080230737593560891353558335337408957948041667929154230334506735825418239563481028126435029,<br>
+ c = m<sup>e</sup> mod n = 225549592628492616152632265482125315868911125659971085929712296366214355608049224179339757637982541542745010822022226409126123627804953064072055667012172681551500780763483172914389813057444669314726404135978565446282309019729994976815925850916487257699707478206132474710963752590399332920672607440793116387051071191919835316845827838287954541558777355864714782464299278036910958484272003656702623646042688124964364376687297742060363382322519436200343894901785951095760714894439233966409337996138592489997024933882003852590408577812535049335652212448474376457015077047529818315877549614859586475504070051201054704954654093482056493092930700787890579346065916834434739980791402216175555075896066616519150164831990626727591876115821219941268309678240872298029611746575376322733311657394502859852213595389607239431585120943268774679785316133478171225719729917877009624611286702010936951705160870997184123775488592130586606070277173392647225589257616518666852404878425355285270687131724258281902727717116041282358028398978152480549468694659695121115046850718180640407034795656480263573773381753855724693739080045739160297875306923958599742379878734638341856117533253251168244471273520476474579680250862738227337561115160603373096699944163.    </p>
+<p>You have succeeded in factorization of n using Shor's algorithm as follows:<br>
+ n = pq,<br>
+ p = 34111525225922333955113751419357677129436029651245533697825114748126342624744832960936498161825269430327019858323450578875242014583535842110912370431931233957939950911741013017595977471949767235426490850284286661592357779825212265055931705799916913817655743434497422993498931394618832741336247426815710164342599150990608143637331068220244525541794855651643135012846039439355101027994945120698530177329829213208761057392236875366458197098507252851244132455996468628957560178868724310000317011912994632328371761486669358065577269198065792981537378448324923622959249447066754504943097391628716371245206444816309511381323,<br>
+ q = 44481453884385518268018625442920628989497457642625668259648790876723318635861137128631112417617317160816537010595885992856520476731882382742220627466006460645416066646852266992087386855491152795237153901319521506429873434336969666536995399866125781057768075533560120399184566956433129854995464893265403724034960689938351450709950699740508459206785093693277541785285699733873530541918483842122691276322286810422297015782658645129421043160749040846216892671031156465364652681036828461619272427318758098538927727392459501761203842363017121432657534770898181975532066012149902177196510416802134121754859407938165610800223.  </p>
+<p>Find the value of m.<br>
+The following python script will give you the flag.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python  </span>
+<span class="n">m</span> <span class="o">=</span> <span class="err">????????</span>  
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%0512x</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;hex&quot;</span><span class="p">)</span>  
+</code></pre></div>
+
+<h3>やってみる</h3>
+<p>問題文でRSA暗号であることはわかったが、解き方が全くわからなかったのでググった。<br>
+解くにあたり、以下のサイトを参考にさせていただいた。</p>
+<ul>
+<li><a href="https://pashango-p.hatenadiary.org/entry/20090706/1246897957">RSA暗号で「ふっかつのじゅもん」を作る(1) - Pashango’s Blog</a></li>
+<li><a href="https://qiita.com/izuki_y/items/ae36f7e0cdb08a19acb2">RSA暗号方式の秘密鍵を手動で求めてみる - Qiita</a></li>
+</ul>
+<p>公開鍵のeを使って、<em>c = m<sup>e</sup> mod n</em>の計算式で暗号化されてるので、<br>
+秘密鍵のdで、<em>m = c<sup>d</sup> mod n</em>を計算して、FLAGを取り出せばよいらしい。  </p>
+<h4>dはどっからきたの</h4>
+<p>拡張ユークリッド互除法で求めるらしい。<br>
+<em>ex + ly = 1</em>となる、xとyの組み合わせを求めて、xがd（秘密鍵）となるらしい。  </p>
+<ul>
+<li>e = 公開鍵</li>
+<li>l = p-1とq-1の最小公倍数</li>
+</ul>
+<h4>答え</h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">codecs</span>
+
+<span class="k">def</span> <span class="nf">gcd2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;拡張ユークリッド互除法&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">a</span> <span class="o">//</span> <span class="n">b</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span>
+        <span class="p">(</span><span class="n">u0</span><span class="p">,</span> <span class="n">v0</span><span class="p">)</span> <span class="o">=</span> <span class="n">gcd2</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">v0</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">u0</span> <span class="o">-</span> <span class="n">q</span> <span class="o">*</span> <span class="n">v0</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+
+<span class="n">e</span> <span class="o">=</span> <span class="mi">65537</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">34111525225922333955113751419357677129436029651245533697825114748126342624744832960936498161825269430327019858323450578875242014583535842110912370431931233957939950911741013017595977471949767235426490850284286661592357779825212265055931705799916913817655743434497422993498931394618832741336247426815710164342599150990608143637331068220244525541794855651643135012846039439355101027994945120698530177329829213208761057392236875366458197098507252851244132455996468628957560178868724310000317011912994632328371761486669358065577269198065792981537378448324923622959249447066754504943097391628716371245206444816309511381323</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mi">44481453884385518268018625442920628989497457642625668259648790876723318635861137128631112417617317160816537010595885992856520476731882382742220627466006460645416066646852266992087386855491152795237153901319521506429873434336969666536995399866125781057768075533560120399184566956433129854995464893265403724034960689938351450709950699740508459206785093693277541785285699733873530541918483842122691276322286810422297015782658645129421043160749040846216892671031156465364652681036828461619272427318758098538927727392459501761203842363017121432657534770898181975532066012149902177196510416802134121754859407938165610800223</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1517330236262917595314610888889322115651087080826711948897066340883208205571592392362650858571076247939805436226544833224526137582834770402681005343930059463684528957271778199162575053306238099823295117697031968370690372250916935800738698142103275969223264184374648246277564306900886005299731265812255274723175925185522344831066577166867786835955092059346244885587228196357297758371381557924676260190209536670230008561217008649261974735505203813478978893582292682827884118215872470401293272325715864815977064075988643101088355047954735427424641386870772845440782632933485165110172437511822736907550777817722248753671107339823410418938404382732079381329288400012929311347390423061254658780185245562668131009832293474920208834795460061115101364091252176594144096675899952570380792978037217747311595899301451192342027799533264325948876556110474850761538179748318187805312451895898751337975457949549497666542175077894987697085521882531938339334715190663665300179658557458036053188152532948734992896239950564081581184284728802682982779186068791931259198917308153082917381616147108543673346682338045309449569430550618884202465809290850964525390539782080230737593560891353558335337408957948041667929154230334506735825418239563481028126435029</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">225549592628492616152632265482125315868911125659971085929712296366214355608049224179339757637982541542745010822022226409126123627804953064072055667012172681551500780763483172914389813057444669314726404135978565446282309019729994976815925850916487257699707478206132474710963752590399332920672607440793116387051071191919835316845827838287954541558777355864714782464299278036910958484272003656702623646042688124964364376687297742060363382322519436200343894901785951095760714894439233966409337996138592489997024933882003852590408577812535049335652212448474376457015077047529818315877549614859586475504070051201054704954654093482056493092930700787890579346065916834434739980791402216175555075896066616519150164831990626727591876115821219941268309678240872298029611746575376322733311657394502859852213595389607239431585120943268774679785316133478171225719729917877009624611286702010936951705160870997184123775488592130586606070277173392647225589257616518666852404878425355285270687131724258281902727717116041282358028398978152480549468694659695121115046850718180640407034795656480263573773381753855724693739080045739160297875306923958599742379878734638341856117533253251168244471273520476474579680250862738227337561115160603373096699944163</span>
+
+
+<span class="n">l</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">lcm</span><span class="p">((</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">q</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">gcd2</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">l</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">if</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">+=</span> <span class="n">l</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="n">mhex</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%0512x</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">m</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">codecs</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">mhex</span><span class="p">,</span> <span class="s1">&#39;hex_codec&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>人間の叡智はすごい。</p>
+<h3>参考文献</h3>
+<ul>
+<li><a href="https://aithea.hatenablog.com/entry/2018/11/22/210816">ksnctf 16 Math I - アイジア</a></li>
+</ul>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://kaffebreak.github.io/blog/tag/ctf.html">ctf</a>
+      <a href="https://kaffebreak.github.io/blog/tag/python.html">python</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " アウトプットの時間 ",
+  "url" : "https://kaffebreak.github.io/blog",
+  "image": "",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
