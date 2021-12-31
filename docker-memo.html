@@ -149,12 +149,20 @@
 <td><code>docker stop [コンテナ名]</code></td>
 </tr>
 <tr>
+<td>コンテナを始動する</td>
+<td><code>docker start [コンテナ名]</code></td>
+</tr>
+<tr>
 <td>コンテナの変更をイメージ適用する</td>
 <td><code>docker commit [コンテナ名] [イメージ名]</code></td>
 </tr>
 <tr>
 <td>イメージをアーカイブ（保存）する</td>
 <td><code>docker save [イメージ名] -o [イメージ名].tar</code></td>
+</tr>
+<tr>
+<td>コンテナをアーカイブ（保存）する</td>
+<td><code>docker export [コンテナ名] &gt; [コンテナ名].tar</code></td>
 </tr>
 <tr>
 <td>アーカイブしたイメージを読み込む</td>
